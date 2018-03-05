@@ -5,25 +5,29 @@ jobs:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
+      - run: echo "build"
       # - run: <command>
   test1:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
+      - run: echo "test1"
       # - run: <command>
   test2:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
+      - run: echo "test2"
       # - run: <command>
-  # hold:
-  #   docker:
-  #     - image: circleci/ruby:2.4.1
-  #   steps:
-  #     - checkout
-  #     # - run: <command>
+  hold:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "hold"
+      # - run: <command>
   deploy:
     docker:
       - image: circleci/ruby:2.4.1
