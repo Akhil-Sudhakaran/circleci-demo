@@ -12,7 +12,7 @@ jobs:
       - run: sudo pear install --nodeps MDB2_Driver_mysqli-1.4.1
       - run: sudo pear install Mail-1.4.1
       - run: sudo pear install Mail_mime-1.10.2
-      - run: sudo apt-get install php5.0-mbstring
+      # - run: sudo apt-get install php5.0-mbstring
       # - run: <command>
   test1:
     docker:
