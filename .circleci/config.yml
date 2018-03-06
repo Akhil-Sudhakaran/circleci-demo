@@ -6,12 +6,12 @@ jobs:
     steps:
       - checkout
       - run: echo "build"
-      - run: pear install MDB2-2.5.0b5
-      - run: pear install DB
-      - run: pear install DB_DataObject
-      - run: pear install MDB2_Driver_mysqli
-      - run: pear install Mail-1.4.1
-      - run: pear install Mail_mime
+      - run: sudo pear install MDB2-2.5.0b5
+      - run: sudo pear install DB
+      - run: sudo pear install DB_DataObject
+      - run: sudo pear install MDB2_Driver_mysqli
+      - run: sudo pear install Mail-1.4.1
+      - run: sudo pear install Mail_mime
       - run: yum install php-mbstring
       # - run: <command>
   test1:
@@ -33,12 +33,12 @@ jobs:
       - image: circleci/php:5
     steps:
       - checkout
-      # - run: pear install MDB2-2.5.0b5
-      # - run: pear install DB
-      # - run: pear install DB_DataObject
-      # - run: pear install MDB2_Driver_mysqli
-      # - run: pear install Mail-1.4.1
-      # - run: pear install Mail_mime
+      # - run: sudo pear install MDB2-2.5.0b5
+      # - run: sudo pear install DB
+      # - run: sudo pear install DB_DataObject
+      # - run: sudo pear install MDB2_Driver_mysqli
+      # - run: sudo pear install Mail-1.4.1
+      # - run: sudo pear install Mail_mime
       # - run: yum install php-mbstring
       # - run: <command>
   deploy:
