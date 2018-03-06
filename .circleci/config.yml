@@ -2,35 +2,48 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/php:5.4.45
     steps:
       - checkout
       - run: echo "build"
+      - run: pear install MDB2-2.5.0b5
+      - run: pear install DB
+      - run: pear install DB_DataObject
+      - run: pear install MDB2_Driver_mysqli
+      - run: pear install Mail-1.4.1
+      - run: pear install Mail_mime
+      - run: yum install php-mbstring
       # - run: <command>
   test1:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/php:5.4.45
     steps:
       - checkout
       - run: echo "test1"
       # - run: <command>
   test2:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/php:5.4.45
     steps:
       - checkout
       - run: echo "test2"
       # - run: <command>
   hold:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/php:5.4.45
     steps:
       - checkout
-      - run: echo "hold"
+      # - run: pear install MDB2-2.5.0b5
+      # - run: pear install DB
+      # - run: pear install DB_DataObject
+      # - run: pear install MDB2_Driver_mysqli
+      # - run: pear install Mail-1.4.1
+      # - run: pear install Mail_mime
+      # - run: yum install php-mbstring
       # - run: <command>
   deploy:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/php:5.4.45
     steps:
       - checkout
       # - run: <command>
