@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/php:5.4.45
+      - image: circleci/php:5.4.11
     steps:
       - checkout
       - run: echo "build"
@@ -16,21 +16,21 @@ jobs:
       # - run: <command>
   test1:
     docker:
-      - image: circleci/php:5.4.45
+      - image: circleci/php:5.4.11
     steps:
       - checkout
       - run: echo "test1"
       # - run: <command>
   test2:
     docker:
-      - image: circleci/php:5.4.45
+      - image: circleci/php:5.4.11
     steps:
       - checkout
       - run: echo "test2"
       # - run: <command>
   hold:
     docker:
-      - image: circleci/php:5.4.45
+      - image: circleci/php:5.4.11
     steps:
       - checkout
       # - run: pear install MDB2-2.5.0b5
@@ -43,7 +43,7 @@ jobs:
       # - run: <command>
   deploy:
     docker:
-      - image: circleci/php:5.4.45
+      - image: circleci/php:5.4.11
     steps:
       - checkout
       # - run: <command>
