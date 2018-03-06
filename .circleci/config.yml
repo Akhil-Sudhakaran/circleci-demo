@@ -9,7 +9,7 @@ jobs:
       - run: sudo pear install MDB2-2.5.0b5
       - run: sudo pear install DB-1.9.2
       - run: sudo pear install DB_DataObject-1.11.5
-      - run: sudo pear install MDB2_Driver_mysqli-1.4.1 --nodeps
+      - run: sudo pear install --nodeps MDB2_Driver_mysqli-1.4.1
       - run: sudo pear install Mail-1.4.1
       - run: sudo pear install Mail_mime-1.10.2
       - run: sudo yum install php-mbstring
