@@ -1,4 +1,6 @@
+ls
 cd ..
+ls
 tar -zcvf test.tar.gz src/
 scp test.tar.gz ec2-user@13.126.93.210:/home/innovature
 #
