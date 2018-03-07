@@ -33,7 +33,7 @@ jobs:
       - checkout
       - run: echo "deployment changed..."
       - run: tar -zcvf test.tar.gz src/
-      - run: scp test.tar.gz sokonokado@52.66.73.199:/home/sokonokado/
+      - run: scp -o "StrictHostKeyChecking=no" test.tar.gz sokonokado@52.66.73.199:/home/sokonokado/
       # - run: ./build/deploy.sh
     # branch: master
     # commands:
