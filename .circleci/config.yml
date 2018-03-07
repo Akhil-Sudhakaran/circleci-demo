@@ -32,7 +32,7 @@ jobs:
     steps:
       - checkout
       - run: echo "deployment changed..."
-      # - run: ./build/deploy.sh
+      - run: ./build/deploy.sh
     # branch: master
     # commands:
     #   - ../build/deploy.sh
