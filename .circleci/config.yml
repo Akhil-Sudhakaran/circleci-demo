@@ -1,76 +1,41 @@
 version: 2
-jobs:
-  build:
-    docker:
-      - image: circleci/php:5
-    general:
-      build_dir: data/public
-    steps:
+deployment:
+  production: # just a label; label names are completely up to you
+    branch: master
+    commands:
+      - ../build/deploy.sh
+  # staging:
+  #   branch: staging
+  #   commands:
+  #     - ./deploy-to-staging.sh
 
-      - checkout
-      - run: echo "build"
-      - run: sudo pear install MDB2-2.5.0b5
-      - run: sudo pear install DB-1.9.2
-      - run: sudo pear install DB_DataObject-1.11.5
-      - run: sudo pear install --nodeps MDB2_Driver_mysqli-1.4.1
-      - run: sudo pear install Mail-1.4.1
-      - run: sudo pear install Mail_mime-1.10.2
-      # - run: sudo apt-get install php5.0-mbstring
-      # - run: <command>
-  # test1:
-  #   docker:
-  #     - image: circleci/php:5
-  #   steps:
-  #     - checkout
-  #     - run: echo "test1"
-  #     # - run: <command>
-  # test2:
-  #   docker:
-  #     - image: circleci/php:5
-  #   steps:
-  #     - checkout
-  #     - run: echo "test2"
-  #     # - run: <command>
-  # hold:
-  #   docker:
-  #     - image: circleci/php:5
-  #   steps:
-  #     - checkout
-  #     # - run: sudo pear install MDB2-2.5.0b5
-  #     # - run: sudo pear install DB
-  #     # - run: sudo pear install DB_DataObject
-  #     # - run: sudo pear install MDB2_Driver_mysqli
-  #     # - run: sudo pear install Mail-1.4.1
-  #     # - run: sudo pear install Mail_mime
-  #     # - run: yum install php-mbstring
-  #     # - run: <command>
-  deploy:
-    docker:
-      - image: circleci/php:5
-    steps:
-      - checkout
-      - cd ..
-      - tar -zcvf your_project_name.tar.gz src/
-      - scp your_project_name.tar.gz ec2-user@13.126.93.210:/home/innovature
-
-      #Here you extract your archive on EC2 using SSH
-      - ssh ec2-user@13.126.93.210 tar -xvzf your_project_name.tar.gz
-      # - run: <command>
-workflows:
-  version: 2
-  build-test-and-approval-deploy:
-    jobs:
-      - build
-      # - test1:
-      #     requires:
-      #       - build
-      # - test2:
-      #     requires:
-      #       - test1
-      # - hold:
-      #     type: approval
-      #     requires:
-      #      - test2
-      - deploy:
-          requires:
-            - build
+# jobs:
+#   build:
+#     docker:
+#       - image: circleci/php:5
+#     general:
+#       build_dir: data/public
+#     steps:
+#
+#       - checkout
+#       - run: echo "build"
+#       - run: sudo pear install MDB2-2.5.0b5
+#       - run: sudo pear install DB-1.9.2
+#       - run: sudo pear install DB_DataObject-1.11.5
+#       - run: sudo pear install --nodeps MDB2_Driver_mysqli-1.4.1
+#       - run: sudo pear install Mail-1.4.1
+#       - run: sudo pear install Mail_mime-1.10.2
+#   deployment:
+#     docker:
+#       - image: circleci/php:5
+#     steps:
+#       - checkout
+#
+# workflows:
+#   version: 2
+#   build-test-and-approval-deploy:
+#     jobs:
+#       - build
+#       - deploy:
+#           requires:
+#             - build
