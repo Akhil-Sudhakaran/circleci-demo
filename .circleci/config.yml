@@ -17,6 +17,8 @@ jobs:
       build_dir: data/public
     steps:
       - checkout
+        # - post:
+        #   - run: cp .circleci/blah.foo.yml config/foo.yml
       - run: echo "build"
       - run: sudo pear install MDB2-2.5.0b5
       - run: sudo pear install DB-1.9.2
@@ -30,7 +32,9 @@ jobs:
     steps:
       - checkout
       - run: echo "deployment changed..."
-      - run: ./build/deploy.sh
+      - run: tar -zcvf test.tar.gz src/
+      - run: scp test.tar.gz sokonokado@52.66.73.199:/home/sokonokado/
+      # - run: ./build/deploy.sh
     # branch: master
     # commands:
     #   - ../build/deploy.sh
