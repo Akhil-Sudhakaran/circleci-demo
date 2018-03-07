@@ -1,41 +1,42 @@
 version: 1
-deployment:
-  production: # just a label; label names are completely up to you
-    branch: master
-    commands:
-      - ../build/deploy.sh
+# deployment:
+#   production: # just a label; label names are completely up to you
+#     branch: master
+#     commands:
+#       - ../build/deploy.sh
   # staging:
   #   branch: staging
   #   commands:
   #     - ./deploy-to-staging.sh
 
-# jobs:
-#   build:
-#     docker:
-#       - image: circleci/php:5
-#     general:
-#       build_dir: data/public
-#     steps:
+jobs:
+  build:
+    docker:
+      - image: circleci/php:5
+    general:
+      build_dir: data/public
+    steps:
+
+      - checkout
+      - run: echo "build"
+      - run: sudo pear install MDB2-2.5.0b5
+      - run: sudo pear install DB-1.9.2
+      - run: sudo pear install DB_DataObject-1.11.5
+      - run: sudo pear install --nodeps MDB2_Driver_mysqli-1.4.1
+      - run: sudo pear install Mail-1.4.1
+      - run: sudo pear install Mail_mime-1.10.2
+  deployment:
+    docker:
+      - image: circleci/php:5
+    steps:
+      - checkout
+      - ../build/deploy.sh
 #
-#       - checkout
-#       - run: echo "build"
-#       - run: sudo pear install MDB2-2.5.0b5
-#       - run: sudo pear install DB-1.9.2
-#       - run: sudo pear install DB_DataObject-1.11.5
-#       - run: sudo pear install --nodeps MDB2_Driver_mysqli-1.4.1
-#       - run: sudo pear install Mail-1.4.1
-#       - run: sudo pear install Mail_mime-1.10.2
-#   deployment:
-#     docker:
-#       - image: circleci/php:5
-#     steps:
-#       - checkout
-#
-# workflows:
-#   version: 2
-#   build-test-and-approval-deploy:
-#     jobs:
-#       - build
-#       - deploy:
-#           requires:
-#             - build
+workflows:
+  version: 2
+  build-test-and-approval-deploy:
+    jobs:
+      - build
+      - deployment:
+          requires:
+            - build
