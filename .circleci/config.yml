@@ -16,7 +16,6 @@ jobs:
     general:
       build_dir: data/public
     steps:
-
       - checkout
       - run: echo "build"
       - run: sudo pear install MDB2-2.5.0b5
@@ -30,6 +29,7 @@ jobs:
       - image: circleci/php:5
     steps:
       - checkout
+      - run: echo "deployment started..."
       - run: ./build/deploy.sh
     # branch: master
     # commands:
