@@ -1,4 +1,4 @@
-tar -zcvf test.tar.gz src/
+# tar -zcvf test.tar.gz src/
 # scp test.tar.gz sokonokado@52.66.73.199:/home/sokonokado
 #
 # #Here you extract your archive on EC2 using SSH
