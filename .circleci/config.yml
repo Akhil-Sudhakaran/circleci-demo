@@ -30,7 +30,7 @@ jobs:
       - image: circleci/php:5
     steps:
       - checkout
-        - run: ../build/deploy.sh
+      - run: ../build/deploy.sh
     # branch: master
     # commands:
     #   - ../build/deploy.sh
