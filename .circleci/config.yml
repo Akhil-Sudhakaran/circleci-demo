@@ -1,4 +1,4 @@
-version: 2
+version: 1
 deployment:
   production: # just a label; label names are completely up to you
     branch: master
