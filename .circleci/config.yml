@@ -26,11 +26,13 @@ jobs:
       - run: sudo pear install Mail-1.4.1
       - run: sudo pear install Mail_mime-1.10.2
   deployment:
-    docker:
-      - image: circleci/php:5
-    steps:
-      - checkout
-      - ./build/deploy.sh
+    # docker:
+    #   - image: circleci/php:5
+    # steps:
+    #   - checkout
+    branch: master
+    commands:
+      - ../build/deploy.sh
 #
 workflows:
   version: 2
