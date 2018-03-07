@@ -1,4 +1,4 @@
-cd ..
+# cd ..
 # tar -zcvf your_project_name.tar.gz src/
 # scp your_project_name.tar.gz ec2-user@13.126.93.210:/home/innovature
 #
